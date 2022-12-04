@@ -4,12 +4,14 @@
  */
 package com.e.shop.controller;
 
-import java.math.BigDecimal;
-import mercadoPago.IMPService;
+import com.e.shop.entitys.Cart;
+import com.e.shop.entitys.Product;
+import com.e.shop.servicesInterfaces.ICartService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,12 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*")
-public class MPController  {
+public class CartController {
     
-    IMPService mPMain;
+    @Autowired 
+    ICartService icartService;
     
-    @PostMapping("/pagar")
-    public void payProducts(@RequestParam String amount,@RequestParam String token,@RequestParam String description,@RequestParam String payMethod,@RequestParam int installments,@RequestParam String email) {
-        mPMain.CreatePayment(amount,token,description,payMethod,installments,email);
+    
+    //@PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/cart/buy")
+   public void createPay(@RequestBody List<Product> cartList) {
+        icartService.cart((Product) cartList);
+        
+        System.out.println(cartList);
+        
     }
+    
+    
 }

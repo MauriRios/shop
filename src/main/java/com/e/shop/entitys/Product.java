@@ -4,12 +4,20 @@
  */
 package com.e.shop.entitys;
 
+import java.util.ArrayList;
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.validation.constraints.Size;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import org.springframework.transaction.annotation.Transactional;
 /**
  *
  * @author mauri
@@ -17,9 +25,12 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
+@Transactional
+@Table(name= "products")
 public class Product {
     
     @Id
+    @Column(name="ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
@@ -34,14 +45,6 @@ public class Product {
     @NotNull
     @Size(min= 3, max = 20, message = "No cumple con la longitud")
     private String volume;
-
-    public String getVolume() {
-        return volume;
-    }
-
-    public void setVolume(String volume) {
-        this.volume = volume;
-    }
     
     @NotNull
     private String image;
@@ -51,7 +54,7 @@ public class Product {
     private String category;
     
     @NotNull
-    private int price;
+    private Float price;
     
     @NotNull
     private int stock;
@@ -59,9 +62,35 @@ public class Product {
     @NotNull
     private int quantity;
     
-    @NotNull
-    private Boolean clearance;
+    @ManyToMany()
+    @JoinTable(name="product_cart",
+            joinColumns=@JoinColumn(name="product_id"),
+            inverseJoinColumns = @JoinColumn(name="cart_id"))
+    private Set<Product> products;
 
+    public Product() {
+    }
+
+    public Set<Product> getProduct() {
+        return products;
+    }
+
+    public void setProduct(Set<Product> product) {
+        this.products = product;
+    }
+
+    public Product(int id, String brand, String style, String volume, String image, String category, Float price, int stock, int quantity) {
+        this.id = id;
+        this.brand = brand;
+        this.style = style;
+        this.volume = volume;
+        this.image = image;
+        this.category = category;
+        this.price = price;
+        this.stock = stock;
+        this.quantity = quantity;
+    }
+    
     public int getId() {
         return id;
     }
@@ -102,12 +131,20 @@ public class Product {
         this.category = category;
     }
 
-    public int getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Float price) {
         this.price = price;
+    }
+    
+        public String getVolume() {
+        return volume;
+    }
+
+    public void setVolume(String volume) {
+        this.volume = volume;
     }
 
     public int getStock() {
@@ -125,14 +162,5 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public Boolean getClearance() {
-        return clearance;
-    }
-
-    public void setClearance(Boolean clearance) {
-        this.clearance = clearance;
-    }
-    
-    
+       
 }

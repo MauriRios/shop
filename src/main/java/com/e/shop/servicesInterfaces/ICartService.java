@@ -4,6 +4,7 @@
  */
 package com.e.shop.servicesInterfaces;
 
+import com.e.shop.entitys.Cart;
 import com.e.shop.entitys.Product;
 import java.util.List;
 
@@ -12,18 +13,21 @@ import java.util.List;
  * @author mauri
  */
 
-public interface IProductService {
+public interface ICartService {
     
+    
+    public List<Product> cart(Product list);
+   
     //Traer una lista de Productos
-    public List<Product> getProducts();
+    public List<Cart> getCart();
     
     //guardad un objeto tipo informacion de Productos
-    public void saveProduct(Product product);
+    public void saveCart(Cart cart);
     
     //Eliminar un objeto pero lo buscamos por ID
-    public void deleteProduct(int id);
+    public void deleteCart(int id);
     
     //Buscar informacion de Productos por id
-    public Product findProduct(int id);
+    public Cart findCart(int id);
   
 }
