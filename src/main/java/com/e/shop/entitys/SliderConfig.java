@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -33,33 +32,7 @@ public class SliderConfig {
     private String title3;
     @NotNull
     private String text3;
-    @NotNull
-    
-    //private String cervezasCatalog;
-    //@NotNull
-    //private String vinosCatalog;
-    //@NotNull
-    //private String regalosCatalog;
-    //@NotNull
-    //private String whiskysCatalog;
-    //@NotNull
-    //private String combosCatalog;
-    //@NotNull
-    //private String aperitivosCatalog;
-    ///@NotNull
-    //private String destiladosCatalog;
-    //@NotNull
-    //private String sinAlcoholCatalog;
-    //@NotNull
-    //private String elegidoDelMes;
-    //@NotNull
-    //private String masVendido1;
-    //@NotNull
-    //private String masVendido2;
-    //@NotNull
-    //private String masVendido3;
-    //@NotNull
-    //private String masVendido4;
+   
     //@NotNull
     //private String spronsors;
 
