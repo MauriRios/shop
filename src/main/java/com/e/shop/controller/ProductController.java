@@ -34,6 +34,11 @@ public class ProductController {
         return iproductService.getProducts();
     }
     
+    @GetMapping("product/traer/{id}")
+    public Product getProductById(@PathVariable int id) {
+        return iproductService.findProduct(id);
+    }
+    
     //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/producto/crear")
     public void createProduct(@RequestBody Product product) {

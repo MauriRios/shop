@@ -30,7 +30,7 @@ public class Cart {
     
     
     
-  @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+  @ManyToMany(mappedBy = "cartIds", cascade = CascadeType.ALL)
     private List<Product> cartList;
 
     public Cart(int id, List<Product> cartList) {

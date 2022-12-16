@@ -5,6 +5,7 @@
 package com.e.shop.entitys;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -62,24 +63,18 @@ public class Product {
     @NotNull
     private int quantity;
     
+    private boolean clearance;
+    
     @ManyToMany()
     @JoinTable(name="product_cart",
             joinColumns=@JoinColumn(name="product_id"),
             inverseJoinColumns = @JoinColumn(name="cart_id"))
-    private Set<Product> products;
+    private List<Cart> cartIds;
 
     public Product() {
     }
 
-    public Set<Product> getProduct() {
-        return products;
-    }
-
-    public void setProduct(Set<Product> product) {
-        this.products = product;
-    }
-
-    public Product(int id, String brand, String style, String volume, String image, String category, Float price, int stock, int quantity) {
+    public Product(int id, String brand, String style, String volume, String image, String category, Float price, int stock, int quantity, boolean clearance, List<Cart> cartIds) {
         this.id = id;
         this.brand = brand;
         this.style = style;
@@ -89,7 +84,33 @@ public class Product {
         this.price = price;
         this.stock = stock;
         this.quantity = quantity;
+        this.clearance = clearance;
+        this.cartIds = cartIds;
     }
+    
+    
+
+    public boolean isClearance() {
+        return clearance;
+    }
+
+    public void setClearance(boolean clearance) {
+        this.clearance = clearance;
+    }
+
+    public List<Cart> getCartIds() {
+        return cartIds;
+    }
+
+    public void setCartIds(List<Cart> cartIds) {
+        this.cartIds = cartIds;
+    }
+
+ 
+
+
+
+
     
     public int getId() {
         return id;
