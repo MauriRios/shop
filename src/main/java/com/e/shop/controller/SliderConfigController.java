@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.e.shop.servicesInterfaces.ISliderConfigService;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  *
@@ -34,19 +35,19 @@ public class SliderConfigController {
         return isliderConfigService.getSliderConfig();
     }
     
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/sliderconfig/crear")
     public void createSliderConfig(@RequestBody SliderConfig sliderConfig) {
         isliderConfigService.saveSliderConfig(sliderConfig);
         
     }
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/sliderconfig/borrar/{id}")
     public void deleteSliderConfig(@PathVariable int id) {
         isliderConfigService.deleteSliderConfig(id);
         
     }
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/sliderconfig/editar/{id}")
     public SliderConfig editSliderConfig(@PathVariable("id") int id,
                                         @RequestBody SliderConfig sliderConfig)

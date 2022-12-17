@@ -8,6 +8,7 @@ import com.e.shop.entitys.HotConfig;
 import com.e.shop.servicesInterfaces.IHotConfigService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,19 +36,19 @@ public class HotConfigController {
         return ihotConfigService.getHotConfig();
     }
     
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/hotconfig/crear")
     public void createHotConfig(@RequestBody HotConfig hotConfig) {
         ihotConfigService.saveHotConfig(hotConfig);
         
     }
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/hotconfig/borrar/{id}")
     public void deleteHotConfig(@PathVariable int id) {
         ihotConfigService.deleteHotConfig(id);
         
     }
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/hotconfig/editar/{id}")
     public HotConfig editHotConfig(@PathVariable("id") int id,
                                         @RequestBody HotConfig hotConfig)

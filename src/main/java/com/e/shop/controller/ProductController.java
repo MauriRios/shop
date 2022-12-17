@@ -8,6 +8,7 @@ import com.e.shop.entitys.Product;
 import com.e.shop.servicesInterfaces.IProductService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,24 +35,25 @@ public class ProductController {
         return iproductService.getProducts();
     }
     
-    @GetMapping("product/traer/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("producto/traer/{id}")
     public Product getProductById(@PathVariable int id) {
         return iproductService.findProduct(id);
     }
     
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/producto/crear")
     public void createProduct(@RequestBody Product product) {
         iproductService.saveProduct(product);
         
     }
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/producto/borrar/{id}")
     public void deleteProduct(@PathVariable int id) {
         iproductService.deleteProduct(id);
         
     }
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/producto/editar/{id}")
     public Product editProduct (@PathVariable("id") int id,
                                         @RequestBody Product product)

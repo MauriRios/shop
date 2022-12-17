@@ -8,6 +8,7 @@ import com.e.shop.entitys.CatalogConfig;
 import com.e.shop.servicesInterfaces.ICatalogConfigService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,19 +35,19 @@ public class CatalogConfigController {
         return icatalogConfigService.getCatalogConfig();
     }
     
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/catalogconfig/crear")
     public void createCatalogConfig(@RequestBody CatalogConfig catalogConfig) {
         icatalogConfigService.saveCatalogConfig(catalogConfig);
         
     }
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/catalogconfig/borrar/{id}")
     public void deleteCatalogConfig(@PathVariable int id) {
         icatalogConfigService.deleteCatalogConfig(id);
         
     }
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/catalogconfig/editar/{id}")
     public CatalogConfig editCatalogConfig(@PathVariable("id") int id,
                                         @RequestBody CatalogConfig catalogConfig)
