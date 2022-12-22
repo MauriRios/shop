@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -24,7 +25,7 @@ public class NuevoUsuario {
     @NotBlank
     private String password;
     private Set<String> roles = new HashSet<>();
-
+    
     public String getNombre() {
         return nombre;
     }

@@ -18,7 +18,6 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 
-
 /**
  *
  * @author mauri
@@ -49,7 +48,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(@NotNull String nombre, @NotNull String nombreUsuario, @NotNull String email, @NotNull String password) {
+    public Usuario(String nombre, String nombreUsuario, String email, String password) {
         this.nombre = nombre;
         this.nombreUsuario = nombreUsuario;
         this.email = email;
