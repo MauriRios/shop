@@ -24,7 +24,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
  */
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://ebrios-commerce.web.app/")
 public class SliderConfigController {
     
     @Autowired 

@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://ebrios-commerce.web.app/")
 public class HotConfigController {
     
     @Autowired 
