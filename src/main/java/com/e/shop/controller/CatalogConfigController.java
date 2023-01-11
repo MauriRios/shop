@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -24,31 +25,32 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping("/catalogconfig")
 @CrossOrigin(origins = "https://ebrios-commerce.web.app")
 public class CatalogConfigController {
     
     @Autowired 
     ICatalogConfigService icatalogConfigService;
     
-    @GetMapping("/catalogconfig/traer")
+    @GetMapping("/traer")
     public List<CatalogConfig> getCatalogConfig() {
         return icatalogConfigService.getCatalogConfig();
     }
     
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/catalogconfig/crear")
+    @PostMapping("/crear")
     public void createCatalogConfig(@RequestBody CatalogConfig catalogConfig) {
         icatalogConfigService.saveCatalogConfig(catalogConfig);
         
     }
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/catalogconfig/borrar/{id}")
+    @DeleteMapping("/borrar/{id}")
     public void deleteCatalogConfig(@PathVariable int id) {
         icatalogConfigService.deleteCatalogConfig(id);
         
     }
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/catalogconfig/editar/{id}")
+    @PutMapping("/editar/{id}")
     public CatalogConfig editCatalogConfig(@PathVariable("id") int id,
                                         @RequestBody CatalogConfig catalogConfig)
     {

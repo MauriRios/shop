@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,31 +26,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@RequestMapping("/hotconfig")
 @CrossOrigin(origins = "https://ebrios-commerce.web.app")
 public class HotConfigController {
     
     @Autowired 
     IHotConfigService ihotConfigService;
     
-    @GetMapping("/hotconfig/traer")
+    @GetMapping("/traer")
     public List<HotConfig> getHotConfig() {
         return ihotConfigService.getHotConfig();
     }
     
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/hotconfig/crear")
+    @PostMapping("/crear")
     public void createHotConfig(@RequestBody HotConfig hotConfig) {
         ihotConfigService.saveHotConfig(hotConfig);
         
     }
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/hotconfig/borrar/{id}")
+    @DeleteMapping("/borrar/{id}")
     public void deleteHotConfig(@PathVariable int id) {
         ihotConfigService.deleteHotConfig(id);
         
     }
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/hotconfig/editar/{id}")
+    @PutMapping("/editar/{id}")
     public HotConfig editHotConfig(@PathVariable("id") int id,
                                         @RequestBody HotConfig hotConfig)
     {

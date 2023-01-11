@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.e.shop.servicesInterfaces.ISliderConfigService;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  *
@@ -24,31 +25,32 @@ import org.springframework.security.access.prepost.PreAuthorize;
  */
 
 @RestController
+@RequestMapping("/sliderconfig")
 @CrossOrigin(origins = "https://ebrios-commerce.web.app")
 public class SliderConfigController {
     
     @Autowired 
     ISliderConfigService isliderConfigService;
     
-    @GetMapping("/sliderconfig/traer")
+    @GetMapping("/traer")
     public List<SliderConfig> getSliderConfig() {
         return isliderConfigService.getSliderConfig();
     }
     
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/sliderconfig/crear")
+    @PostMapping("/crear")
     public void createSliderConfig(@RequestBody SliderConfig sliderConfig) {
         isliderConfigService.saveSliderConfig(sliderConfig);
         
     }
     @PreAuthorize("hasRole('ADMIN')")
-    @DeleteMapping("/sliderconfig/borrar/{id}")
+    @DeleteMapping("/borrar/{id}")
     public void deleteSliderConfig(@PathVariable int id) {
         isliderConfigService.deleteSliderConfig(id);
         
     }
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/sliderconfig/editar/{id}")
+    @PutMapping("/editar/{id}")
     public SliderConfig editSliderConfig(@PathVariable("id") int id,
                                         @RequestBody SliderConfig sliderConfig)
     {
