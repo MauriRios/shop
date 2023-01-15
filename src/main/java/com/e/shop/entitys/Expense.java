@@ -25,15 +25,15 @@ public class Expense {
     
     private String month;
 
-    private int expenseMonthlyValance;
+    private int expenseMonthlyBalance;
 
     public Expense() {
     }
 
-    public Expense(int id, String month, int expenseMonthlyValance) {
+    public Expense(int id, String month, int expenseMonthlyBalance) {
         this.id = id;
         this.month = month;
-        this.expenseMonthlyValance = expenseMonthlyValance;
+        this.expenseMonthlyBalance = expenseMonthlyBalance;
     }
 
     public int getId() {
@@ -52,12 +52,12 @@ public class Expense {
         this.month = month;
     }
 
-    public int getExpenseMonthlyValance() {
-        return expenseMonthlyValance;
+    public int getExpenseMonthlyBalance() {
+        return expenseMonthlyBalance;
     }
 
-    public void setExpenseMonthlyValance(int expenseMonthlyValance) {
-        this.expenseMonthlyValance = expenseMonthlyValance;
+    public void setExpenseMonthlyBalance(int expenseMonthlyBalance) {
+        this.expenseMonthlyBalance = expenseMonthlyBalance;
     }
     
     

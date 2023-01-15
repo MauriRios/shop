@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/valance")
+@RequestMapping("/balance")
 @CrossOrigin(origins = "https://ebrios-commerce.web.app")
 /* "https://ebrios-commerce.web.app"*/
 /* "http://localhost:4200" */
-public class ValanceController {
+public class BalanceController {
     
         
     @Autowired 

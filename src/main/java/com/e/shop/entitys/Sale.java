@@ -25,15 +25,15 @@ public class Sale {
     
     private String month;
 
-    private int saleMonthlyValance;
+    private int saleMonthlyBalance;
 
     public Sale() {
     }
 
-    public Sale(int id, String month, int saleMonthlyValance) {
+    public Sale(int id, String month, int saleMonthlyBalance) {
         this.id = id;
         this.month = month;
-        this.saleMonthlyValance = saleMonthlyValance;
+        this.saleMonthlyBalance = saleMonthlyBalance;
     }
 
     
@@ -54,12 +54,12 @@ public class Sale {
         this.month = month;
     }
 
-    public int getSaleMonthlyValance() {
-        return saleMonthlyValance;
+    public int getSaleMonthlyBalance() {
+        return saleMonthlyBalance;
     }
 
-    public void setSaleMonthlyValance(int saleMonthlyValance) {
-        this.saleMonthlyValance = saleMonthlyValance;
+    public void setSaleMonthlyBalance(int saleMonthlyBalance) {
+        this.saleMonthlyBalance = saleMonthlyBalance;
     }
     
     
