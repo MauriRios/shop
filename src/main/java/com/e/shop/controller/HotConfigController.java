@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/hotconfig")
-@CrossOrigin(origins = "https://ebrios-commerce.web.app")
+@CrossOrigin(origins = "http://localhost:4200")
 /* "https://ebrios-commerce.web.app"*/
 /* "http://localhost:4200" */
 public class HotConfigController {
