@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/catalogconfig")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://ebrios-commerce.web.app")
 /* "https://ebrios-commerce.web.app"*/
 /* "http://localhost:4200" */
 public class CatalogConfigController {
